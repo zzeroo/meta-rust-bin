@@ -29,6 +29,10 @@ python () {
     d.setVar("SRC_URI", ' '.join(src_uri + [cargo_uri]))
 }
 
-FILES_${PN} += "/usr/lib/rustlib/manifest-cargo /usr/etc/bash_completion.d /usr/share/zsh/site-functions/_cargo"
 
 BBCLASSEXTEND += "native nativesdk"
+
+FILES_${PN} += "/usr/lib/rustlib/manifest-cargo /usr/etc/bash_completion.d /usr/share/zsh/site-functions/_cargo"
+
+INSANE_SKIP_${PN} = "ldflags"
+INSANE_SKIP_${PN}-dev = "ldflags"
